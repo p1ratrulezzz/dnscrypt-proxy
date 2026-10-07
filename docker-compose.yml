@@ -1,0 +1,19 @@
+name: dnscrypt-proxy
+services:
+  dnscrypt-proxy:
+    build:
+      context: "."
+      dockerfile: Dockerfile
+      tags:
+        - dnscrypt-proxy:latest
+    #command:
+    #  - tail -f /dev/null
+    x-bake:
+      platforms:
+        - linux/arm64
+        - linux/arm64/v8
+        - linux/arm64/v2
+        - linux/arm64/v3
+        - linux/arm64/v4
+        - linux/amd64
+      pull: false
