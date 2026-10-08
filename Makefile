@@ -1,6 +1,6 @@
 IMAGE ?= ghcr.io/p1ratrulezzz/dnscrypt-proxy
 VERSION ?= 2.1.18
-PLATFORMS ?= linux/amd64,linux/arm64
+PLATFORMS ?= linux/amd64,linux/arm64,linux/arm/v7
 BUILDER ?= dnscrypt-builder
 
 .PHONY: help builder build push load
