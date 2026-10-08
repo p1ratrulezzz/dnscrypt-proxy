@@ -49,6 +49,4 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           labels: ${{ steps.meta.outputs.labels }}
-          annotations: |
-            org.opencontainers.image.description="dnscrypt-proxy for MikroTik, amd64 and arm64"
-            org.opencontainers.image.source=https://github.com/p1ratrulezzz/dnscrypt-proxy
+          outputs: type=image,push=true,annotation-index.org.opencontainers.image.description=dnscrypt-proxy for MikroTik
