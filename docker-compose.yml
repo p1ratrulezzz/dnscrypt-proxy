@@ -5,15 +5,12 @@ services:
       context: "."
       dockerfile: Dockerfile
       tags:
-        - dnscrypt-proxy:latest
+        - ghcr.io/p1ratrulezzz/dnscrypt-proxy:latest
     #command:
     #  - tail -f /dev/null
     x-bake:
       platforms:
-        - linux/arm64
-        - linux/arm64/v8
-        - linux/arm64/v2
-        - linux/arm64/v3
-        - linux/arm64/v4
         - linux/amd64
+        - linux/arm64
+        - linux/arm/v7
       pull: false

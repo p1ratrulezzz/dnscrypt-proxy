@@ -1,8 +1,5 @@
 FROM --platform=$BUILDPLATFORM golang:1.25-alpine AS build
 
-LABEL org.opencontainers.image.source=https://github.com/p1ratrulezzz/dnscrypt-proxy
-LABEL org.opencontainers.image.description="Dockerized version of dnscrypt-proxy for Mikrotik routers and others"
-
 ARG VERSION=2.1.18
 ARG TARGETOS TARGETARCH TARGETVARIANT
 RUN apk add --no-cache ca-certificates
