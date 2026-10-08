@@ -13,10 +13,6 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    labels: |
-      ${{ steps.meta.outputs.labels }}
-      org.opencontainers.image.description=dnscrypt-proxy for MikroTik, amd64 and arm64
-      org.opencontainers.image.source=https://github.com/p1ratrulezzz/dnscrypt-proxy
     steps:
       - uses: actions/checkout@v4
       - uses: docker/setup-qemu-action@v3
@@ -50,6 +46,9 @@ jobs:
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           build-args: VERSION=${{ steps.ver.outputs.version }}
           tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          labels: |
+            ${{ steps.meta.outputs.labels }}
+            org.opencontainers.image.description=dnscrypt-proxy for MikroTik, amd64 and arm64
+            org.opencontainers.image.source=https://github.com/p1ratrulezzz/dnscrypt-proxy
           cache-from: type=gha
           cache-to: type=gha,mode=max
