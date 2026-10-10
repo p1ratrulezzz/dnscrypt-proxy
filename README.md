@@ -43,12 +43,8 @@ add bridge=br-containers interface=veth-dns
 /ip firewall nat
 add chain=srcnat action=masquerade src-address=10.10.4.0/24
 add chain=dstnat action=dst-nat protocol=udp dst-port=53 \
-    to-addresses=10.10.4.2 to-ports=53
-add chain=dstnat action=dst-nat protocol=tcp dst-port=53 \
-    to-addresses=10.10.4.2 to-ports=53
+    to-addresses=10.10.4.2 to-ports=53 in-interface=bridge
 
-/ip firewall filter
-add chain=input action=accept src-address=10.10.4.0/24
 ```
 
 The bridge address must be `/24`. A `/32` installs a route only to `10.10.4.1`, so the container at `10.10.4.2` never becomes a neighbor and cannot ping its gateway.
