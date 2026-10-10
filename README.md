@@ -36,21 +36,18 @@ add name=br-containers
 
 /ip address
 add address=10.10.4.1/24 interface=br-containers
-add address=192.168.88.53/24 interface=bridge
 
 /interface bridge port
 add bridge=br-containers interface=veth-dns
 
 /ip firewall nat
 add chain=srcnat action=masquerade src-address=10.10.4.0/24
-add chain=dstnat action=dst-nat dst-address=192.168.88.53 protocol=udp dst-port=53 \
+add chain=dstnat action=dst-nat protocol=udp dst-port=53 \
     to-addresses=10.10.4.2 to-ports=53
-add chain=dstnat action=dst-nat dst-address=192.168.88.53 protocol=tcp dst-port=53 \
+add chain=dstnat action=dst-nat protocol=tcp dst-port=53 \
     to-addresses=10.10.4.2 to-ports=53
 
 /ip firewall filter
-add chain=forward action=accept dst-address=10.10.4.2 protocol=udp dst-port=53
-add chain=forward action=accept dst-address=10.10.4.2 protocol=tcp dst-port=53
 add chain=input action=accept src-address=10.10.4.0/24
 ```
 
