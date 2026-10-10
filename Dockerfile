@@ -15,10 +15,10 @@ RUN case "${TARGETARCH}${TARGETVARIANT}" in \
     && GOOS=${TARGETOS} GOARCH=${TARGETARCH} \
        go build -trimpath -ldflags="-s -w" -o /out/dnscrypt-proxy .
 
-FROM alpine:3.24.2
+FROM scratch
 
-RUN addgroup -S dnscrypt && adduser -S -D -H -G dnscrypt dnscrypt \
-    && apk add --no-cache ca-certificates
+#RUN addgroup -S dnscrypt && adduser -S -D -H -G dnscrypt dnscrypt \
+#    && apk add --no-cache ca-certificates
 
 COPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 COPY --from=build /out/dnscrypt-proxy /dnscrypt-proxy
