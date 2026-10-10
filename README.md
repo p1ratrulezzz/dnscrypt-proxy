@@ -4,8 +4,8 @@ Minimal multi-arch image of [dnscrypt-proxy](https://github.com/DNSCrypt/dnscryp
 
 Images:
 
-- `ghcr.io/p1ratrulezzz/dnscrypt-proxy:latest` — built from `master`
-- `ghcr.io/p1ratrulezzz/dnscrypt-proxy:<version>` — built from a git tag
+- `ghcr.io/p1ratrulezzz/dnscrypt-proxy-docker:latest` — built from `master`
+- `ghcr.io/p1ratrulezzz/dnscrypt-proxy-docker:<version>` — built from a git tag
 
 The process starts as root so it can bind port 53, then drops to the `dnscrypt` user when `user_name` is set. Config is not baked into the image; mount it at `/config/dnscrypt-proxy.toml`.
 
